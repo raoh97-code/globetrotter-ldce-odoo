@@ -812,6 +812,110 @@ input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
+   Trip Feedback Section
+   -------------------------------------------------------------------------- */
+.trip-feedback-section {
+    margin-top: 6px;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.feedback-summary {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.feedback-score-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.feedback-score {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--text-main);
+}
+
+.feedback-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.feedback-star {
+    width: 14px;
+    height: 14px;
+    color: rgba(245, 158, 11, 0.25);
+}
+
+.feedback-star.filled {
+    color: var(--accent-amber);
+    fill: var(--accent-amber);
+}
+
+.feedback-summary-copy {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.feedback-form-row {
+    align-items: end;
+}
+
+.rating-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 6px 10px;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.rating-star {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.rating-star.active {
+    color: var(--accent-amber);
+    transform: translateY(-1px);
+}
+
+.feedback-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+/* --------------------------------------------------------------------------
    10. Dashboard Sidebar Widgets
    -------------------------------------------------------------------------- */
 .panel-card {

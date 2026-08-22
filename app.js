@@ -128,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripsContainer = document.getElementById('recentTripsContainer');
     const destinationsGrid = document.getElementById('destinationsGrid');
     const tripCountBadge = document.getElementById('tripCountBadge');
+    const feedbackTripSelect = document.getElementById('feedbackTrip');
+    const tripFeedbackForm = document.getElementById('tripFeedbackForm');
+    const ratingPicker = document.getElementById('ratingPicker');
 
     // Modal Elements
     const createTripModal = document.getElementById('createTripModal');
@@ -242,6 +245,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.lucide) lucide.createIcons();
         if (tripCountBadge) tripCountBadge.textContent = trips.length;
+    }
+
+    function populateFeedbackTrips() {
+        if (!feedbackTripSelect) return;
+
+        feedbackTripSelect.innerHTML = '<option value="">Select a trip</option>';
+
+        trips.forEach(trip => {
+            const option = document.createElement('option');
+            option.value = trip.title;
+            option.textContent = trip.title;
+            feedbackTripSelect.appendChild(option);
+        });
+    }
+
+    function setActiveRating(rating) {
+        if (!ratingPicker) return;
+
+        const stars = ratingPicker.querySelectorAll('.rating-star');
+        stars.forEach(star => {
+            const starValue = Number(star.dataset.rating);
+            star.classList.toggle('active', starValue <= rating);
+        });
     }
 
     function renderDestinations(filter = 'all', searchQuery = '') {
@@ -374,6 +400,35 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --------------------------------------------------------------------------
        Filters & Search
        -------------------------------------------------------------------------- */
+    if (ratingPicker) {
+        ratingPicker.addEventListener('click', (event) => {
+            const star = event.target.closest('.rating-star');
+            if (!star) return;
+
+            const selectedRating = Number(star.dataset.rating);
+            setActiveRating(selectedRating);
+        });
+    }
+
+    if (tripFeedbackForm) {
+        tripFeedbackForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const tripName = feedbackTripSelect.value;
+            const feedbackMessage = document.getElementById('feedbackMessage').value.trim();
+            const rating = Array.from(ratingPicker.querySelectorAll('.rating-star')).filter(star => star.classList.contains('active')).length;
+
+            if (!tripName || !feedbackMessage) {
+                showToast('Please select a trip and add your feedback before submitting.');
+                return;
+            }
+
+            showToast(`Feedback submitted for ${tripName}! Thanks for sharing your trip review.`);
+            tripFeedbackForm.reset();
+            setActiveRating(4);
+        });
+    }
+
     if (filterPillsContainer) {
         filterPillsContainer.addEventListener('click', (e) => {
             if (e.target.classList.contains('pill')) {
@@ -479,5 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial render call
     renderTrips();
+    populateFeedbackTrips();
+    setActiveRating(4);
     renderDestinations();
 });
