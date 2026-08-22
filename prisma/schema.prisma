@@ -1,0 +1,136 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  firstName    String   @map("first_name")
+  lastName     String   @map("last_name")
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  phone        String?
+  city         String?
+  country      String?
+  photoUrl     String?  @map("photo_url")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  trips      Trip[]
+  cityPhotos CityPhoto[]
+
+  @@map("users")
+}
+
+model Trip {
+  id            String   @id @default(cuid())
+  userId        String   @map("user_id")
+  name          String
+  description   String?
+  startDate     DateTime @map("start_date")
+  endDate       DateTime @map("end_date")
+  coverPhotoUrl String?  @map("cover_photo_url")
+  isPublic      Boolean  @default(false) @map("is_public")
+  shareToken    String?  @unique @map("share_token")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stops       TripStop[]
+  budgetItems BudgetItem[]
+
+  @@map("trips")
+}
+
+model City {
+  id              String @id @default(cuid())
+  name            String
+  state           String?
+  country         String
+  costIndex       Int    @map("cost_index")
+  popularityScore Int    @map("popularity_score")
+  imageUrl        String? @map("image_url")
+
+  stops      TripStop[]
+  activities Activity[]
+  photos     CityPhoto[]
+
+  @@map("cities")
+}
+
+model CityPhoto {
+  id        String   @id @default(cuid())
+  cityId    String   @map("city_id")
+  userId    String   @map("user_id")
+  imageUrl  String   @map("image_url")
+  caption   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  city City @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("city_photos")
+}
+
+model TripStop {
+  id            String   @id @default(cuid())
+  tripId        String   @map("trip_id")
+  cityId        String   @map("city_id")
+  orderIndex    Int      @map("order_index")
+  startDate     DateTime @map("start_date")
+  endDate       DateTime @map("end_date")
+  sectionBudget Decimal? @map("section_budget") @db.Decimal(10, 2)
+
+  trip           Trip           @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  city           City           @relation(fields: [cityId], references: [id], onDelete: Restrict)
+  tripActivities TripActivity[]
+
+  @@map("trip_stops")
+}
+
+model Activity {
+  id              String  @id @default(cuid())
+  cityId          String  @map("city_id")
+  name            String
+  category        String
+  cost            Decimal @db.Decimal(10, 2)
+  durationMinutes Int     @map("duration_minutes")
+  description     String?
+  imageUrl        String? @map("image_url")
+
+  city           City           @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  tripActivities TripActivity[]
+
+  @@map("activities")
+}
+
+model TripActivity {
+  id           String   @id @default(cuid())
+  tripStopId   String   @map("trip_stop_id")
+  activityId   String   @map("activity_id")
+  dayNumber    Int      @map("day_number")
+  timeSlot     String   @map("time_slot")
+  costOverride Decimal? @map("cost_override") @db.Decimal(10, 2)
+
+  tripStop TripStop @relation(fields: [tripStopId], references: [id], onDelete: Cascade)
+  activity Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+
+  @@map("trip_activities")
+}
+
+model BudgetItem {
+  id       String  @id @default(cuid())
+  tripId   String  @map("trip_id")
+  category String
+  amount   Decimal @db.Decimal(10, 2)
+  note     String?
+
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  @@map("budget_items")
+}
