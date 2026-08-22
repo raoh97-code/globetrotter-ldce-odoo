@@ -277,6 +277,70 @@
                     </aside>
                 </div>
 
+                <!-- Trip Feedback Section -->
+                <section class="trip-feedback-section panel-card">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">Trip Feedback</h2>
+                            <p class="section-desc">Share how your experience went and help improve future travel plans.</p>
+                        </div>
+                        <span class="badge badge-purple">Traveler Review</span>
+                    </div>
+
+                    <div class="feedback-grid">
+                        <div class="feedback-summary">
+                            <div class="feedback-score-wrap">
+                                <span class="feedback-score">4.8</span>
+                                <div class="feedback-stars">
+                                    <i data-lucide="star" class="feedback-star filled"></i>
+                                    <i data-lucide="star" class="feedback-star filled"></i>
+                                    <i data-lucide="star" class="feedback-star filled"></i>
+                                    <i data-lucide="star" class="feedback-star filled"></i>
+                                    <i data-lucide="star" class="feedback-star filled"></i>
+                                </div>
+                            </div>
+                            <p class="feedback-summary-copy">Based on 128 traveler reviews from recent trips.</p>
+                        </div>
+
+                        <form id="tripFeedbackForm" class="feedback-form">
+                            <div class="form-row feedback-form-row">
+                                <div class="form-group">
+                                    <label for="feedbackTrip">Trip</label>
+                                    <select id="feedbackTrip" required>
+                                        <option value="">Select a trip</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Rating</label>
+                                    <div class="rating-picker" id="ratingPicker" aria-label="Trip rating">
+                                        <button type="button" class="rating-star active" data-rating="1" aria-label="1 star">★</button>
+                                        <button type="button" class="rating-star active" data-rating="2" aria-label="2 stars">★</button>
+                                        <button type="button" class="rating-star active" data-rating="3" aria-label="3 stars">★</button>
+                                        <button type="button" class="rating-star active" data-rating="4" aria-label="4 stars">★</button>
+                                        <button type="button" class="rating-star" data-rating="5" aria-label="5 stars">★</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="feedbackMessage">Your feedback</label>
+                                <textarea id="feedbackMessage" rows="4"
+                                    placeholder="Tell us what went well, what could improve, and what you’d want on your next trip..."
+                                    required></textarea>
+                            </div>
+
+                            <div class="feedback-actions">
+                                <button type="reset" class="btn btn-secondary">Clear</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i data-lucide="message-square-text"></i>
+                                    Submit Feedback
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
                 <!-- Featured Destinations Section -->
                 <section class="featured-section">
                     <div class="section-header">
