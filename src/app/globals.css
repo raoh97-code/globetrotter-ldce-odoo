@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 7.5%;
+    --card-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --accent: 262.1 83.3% 57.8%;
+    --border: 217.2 32.6% 17.5%;
+  }
+
+  body {
+    background-color: #0b0f17;
+    color: #f1f5f9;
+    font-family: var(--font-geist-sans), sans-serif;
+  }
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.gradient-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 70%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
