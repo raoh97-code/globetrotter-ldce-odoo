@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlobeTrotter — Smart Multi-City Travel Planner</title>
-    <meta name="description" content="Personalized, intelligent, and collaborative multi-city travel planning platform. Plan trips, estimate budgets, and explore destinations.">
+    <meta name="description"
+        content="Personalized, intelligent, and collaborative multi-city travel planning platform. Plan trips, estimate budgets, and explore destinations.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- App Container -->
     <div class="app-layout">
-        
+
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
@@ -69,7 +73,8 @@
             <div class="sidebar-footer">
                 <div class="user-profile-card">
                     <div class="avatar">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Harsh Rao">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+                            alt="Harsh Rao">
                         <span class="status-indicator"></span>
                     </div>
                     <div class="user-info">
@@ -85,7 +90,7 @@
 
         <!-- Main Content Area -->
         <main class="main-wrapper">
-            
+
             <!-- Top Navbar -->
             <header class="top-header">
                 <div class="header-left">
@@ -94,11 +99,12 @@
                     </button>
                     <div class="search-box">
                         <i data-lucide="search" class="search-icon"></i>
-                        <input type="text" id="globalSearchInput" placeholder="Search cities, activities, or trips... (e.g. Paris, Tokyo)">
+                        <input type="text" id="globalSearchInput"
+                            placeholder="Search cities, activities, or trips... (e.g. Paris, Tokyo)">
                         <span class="keyboard-shortcut">⌘K</span>
                     </div>
                 </div>
-                
+
                 <div class="header-right">
                     <button class="icon-btn notification-btn" id="notifBtn" title="Notifications">
                         <i data-lucide="bell"></i>
@@ -123,8 +129,9 @@
                             <span>AI-Powered Travel Intelligence</span>
                         </div>
                         <h1 class="hero-title">Where to next, <span class="gradient-text">Harsh?</span></h1>
-                        <p class="hero-subtitle">Design multi-city itineraries, estimate real-time budgets, and collaborate seamlessly with fellow travelers.</p>
-                        
+                        <p class="hero-subtitle">Design multi-city itineraries, estimate real-time budgets, and
+                            collaborate seamlessly with fellow travelers.</p>
+
                         <div class="hero-actions">
                             <button class="btn btn-primary btn-lg" id="heroPlanBtn">
                                 <i data-lucide="plus-circle"></i>
@@ -187,15 +194,16 @@
 
                 <!-- Two Column Dashboard Layout -->
                 <div class="dashboard-grid">
-                    
+
                     <!-- Main Column: Recent Trips & Itineraries -->
                     <div class="grid-main">
-                        
+
                         <!-- Recent Trips Header -->
                         <div class="section-header">
                             <div>
                                 <h2 class="section-title">Active & Upcoming Trips</h2>
-                                <p class="section-desc">Manage your multi-stop itineraries, travel dates, and activity logs.</p>
+                                <p class="section-desc">Manage your multi-stop itineraries, travel dates, and activity
+                                    logs.</p>
                             </div>
                             <a href="#trips" class="link-btn">View All Trips <i data-lucide="arrow-right"></i></a>
                         </div>
@@ -209,7 +217,7 @@
 
                     <!-- Side Column: Financial Summary & Quick Explore -->
                     <aside class="grid-sidebar">
-                        
+
                         <!-- Financial Breakdown Card -->
                         <div class="panel-card budget-widget">
                             <div class="panel-header">
@@ -230,11 +238,13 @@
                                     <span class="cat-amount">$1,200 (42%)</span>
                                 </div>
                                 <div class="budget-cat-item">
-                                    <div class="cat-label"><span class="cat-dot dot-transport"></span> Flights & Transport</div>
+                                    <div class="cat-label"><span class="cat-dot dot-transport"></span> Flights &
+                                        Transport</div>
                                     <span class="cat-amount">$850 (30%)</span>
                                 </div>
                                 <div class="budget-cat-item">
-                                    <div class="cat-label"><span class="cat-dot dot-activities"></span> Activities & Tours</div>
+                                    <div class="cat-label"><span class="cat-dot dot-activities"></span> Activities &
+                                        Tours</div>
                                     <span class="cat-amount">$500 (18%)</span>
                                 </div>
                                 <div class="budget-cat-item">
@@ -250,12 +260,17 @@
                                 <h3><i data-lucide="cloud-sun" class="panel-icon"></i> Paris Weather Forecast</h3>
                                 <span class="weather-temp">22°C</span>
                             </div>
-                            <p class="weather-desc"><i data-lucide="sun"></i> Pleasant & clear. Perfect for outdoor sightseeing & museum walks!</p>
+                            <p class="weather-desc"><i data-lucide="sun"></i> Pleasant & clear. Perfect for outdoor
+                                sightseeing & museum walks!</p>
                             <div class="weather-mini-forecast">
-                                <div class="forecast-day"><span>Thu</span><i data-lucide="sun"></i><span>23°</span></div>
-                                <div class="forecast-day"><span>Fri</span><i data-lucide="cloud-rain"></i><span>19°</span></div>
-                                <div class="forecast-day"><span>Sat</span><i data-lucide="cloud-sun"></i><span>21°</span></div>
-                                <div class="forecast-day"><span>Sun</span><i data-lucide="sun"></i><span>24°</span></div>
+                                <div class="forecast-day"><span>Thu</span><i data-lucide="sun"></i><span>23°</span>
+                                </div>
+                                <div class="forecast-day"><span>Fri</span><i
+                                        data-lucide="cloud-rain"></i><span>19°</span></div>
+                                <div class="forecast-day"><span>Sat</span><i
+                                        data-lucide="cloud-sun"></i><span>21°</span></div>
+                                <div class="forecast-day"><span>Sun</span><i data-lucide="sun"></i><span>24°</span>
+                                </div>
                             </div>
                         </div>
 
@@ -267,7 +282,8 @@
                     <div class="section-header">
                         <div>
                             <h2 class="section-title">Popular Destinations</h2>
-                            <p class="section-desc">Handpicked cities with cost index ratings and curated experiences.</p>
+                            <p class="section-desc">Handpicked cities with cost index ratings and curated experiences.
+                            </p>
                         </div>
                         <div class="filter-pills" id="cityFilterPills">
                             <button class="pill active" data-filter="all">All Cities</button>
@@ -298,7 +314,7 @@
                     <i data-lucide="x"></i>
                 </button>
             </div>
-            
+
             <form id="createTripForm" class="modal-form">
                 <div class="form-group">
                     <label for="tripTitle">Trip Name *</label>
@@ -318,7 +334,8 @@
 
                 <div class="form-group">
                     <label for="tripDescription">Description / Notes</label>
-                    <textarea id="tripDescription" rows="3" placeholder="Describe the goal of your trip, budget limits, or travel companions..."></textarea>
+                    <textarea id="tripDescription" rows="3"
+                        placeholder="Describe the goal of your trip, budget limits, or travel companions..."></textarea>
                 </div>
 
                 <div class="form-row">
@@ -352,4 +369,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>

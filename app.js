@@ -3,7 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Initialize Lucide Icons
     if (window.lucide) {
         lucide.createIcons();
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripsContainer = document.getElementById('recentTripsContainer');
     const destinationsGrid = document.getElementById('destinationsGrid');
     const tripCountBadge = document.getElementById('tripCountBadge');
-    
+
     // Modal Elements
     const createTripModal = document.getElementById('createTripModal');
     const openCreateTripModalBtn = document.getElementById('openCreateTripModal');
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tripsToRender.forEach(trip => {
             const budgetPercent = Math.min(100, Math.round((trip.spentBudget / trip.totalBudget) * 100));
-            
+
             const cardHTML = `
                 <article class="trip-card">
                     <div class="trip-thumb">
@@ -246,17 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderDestinations(filter = 'all', searchQuery = '') {
         destinationsGrid.innerHTML = '';
-        
+
         let filtered = popularCities.filter(city => {
-            const matchesFilter = (filter === 'all') || 
-                                 (filter === 'europe' && city.region === 'europe') ||
-                                 (filter === 'asia' && city.region === 'asia') ||
-                                 (filter === 'budget' && city.costIndex === '$');
-            
+            const matchesFilter = (filter === 'all') ||
+                (filter === 'europe' && city.region === 'europe') ||
+                (filter === 'asia' && city.region === 'asia') ||
+                (filter === 'budget' && city.costIndex === '$');
+
             const matchesSearch = city.name.toLowerCase().includes(searchQuery) ||
-                                  city.country.toLowerCase().includes(searchQuery) ||
-                                  city.tags.some(t => t.toLowerCase().includes(searchQuery));
-            
+                city.country.toLowerCase().includes(searchQuery) ||
+                city.tags.some(t => t.toLowerCase().includes(searchQuery));
+
             return matchesFilter && matchesSearch;
         });
 
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
        -------------------------------------------------------------------------- */
     createTripForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const title = document.getElementById('tripTitle').value;
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
@@ -388,9 +388,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (globalSearchInput) {
         globalSearchInput.addEventListener('input', (e) => {
             const query = e.target.value.trim().toLowerCase();
-            
+
             // Filter trips
-            const filteredTrips = trips.filter(t => 
+            const filteredTrips = trips.filter(t =>
                 t.title.toLowerCase().includes(query) ||
                 t.cities.some(c => c.toLowerCase().includes(query))
             );
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${start.toLocaleDateString('en-US', options)} - ${end.toLocaleDateString('en-US', options)}, ${end.getFullYear()}`;
     }
 
-    window.showToast = function(message) {
+    window.showToast = function (message) {
         const toast = document.createElement('div');
         toast.className = 'toast';
         toast.innerHTML = `
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     };
 
-    window.addCityToUpcomingTrip = function(cityName) {
+    window.addCityToUpcomingTrip = function (cityName) {
         if (trips.length > 0) {
             if (!trips[0].cities.includes(cityName)) {
                 if (trips[0].cities.includes('Destination Pending')) {
@@ -472,10 +472,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroExploreBtn = document.getElementById('heroExploreBtn');
     if (heroExploreBtn) {
         heroExploreBtn.addEventListener('click', () => {
-            const featuredSection = document.querySelector('.featured-section');
-            if (featuredSection) {
-                featuredSection.scrollIntoView({ behavior: 'smooth' });
-            }
+            // Navigate to the Explore Destinations page
+            window.location.href = 'explore.html';
         });
     }
 
